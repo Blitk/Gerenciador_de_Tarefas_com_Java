@@ -5,7 +5,11 @@ import repository.TarefaRepository;
 import service.TarefaService;
 
 public class Main {
-	public TarefaRepository repository = new CSVTarefaRepository();
-	public TarefaService service = new TarefaService(repository);
+	
+	public static void main(String[] args) {
+		TarefaRepository repository = new CSVTarefaRepository();
+		TarefaService service = new TarefaService(repository);
+	
+	}
 	
 }

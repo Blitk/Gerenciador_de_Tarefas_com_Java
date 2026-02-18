@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 
 import model.Prioridade;
 import model.Status;
@@ -17,7 +18,8 @@ import model.Tarefa;
 
 public class CSVTarefaRepository implements TarefaRepository{
 	
-	private String path = "..\\data\\data.csv";
+	private String path = "data/data.csv";
+
 	private List<Tarefa> tarefas = new ArrayList<>();
 	
 	public CSVTarefaRepository() {

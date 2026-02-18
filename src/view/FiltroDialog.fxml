@@ -1,0 +1,57 @@
+<?xml version="1.0" enconding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox spacing="10"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="view/FiltroDialogController">
+	
+	<padding>
+		<Insets top="15" right="15" bottom="15" left="15"/>
+	</padding>
+	
+	<Label text="Filtros"/>
+	<Vbox spacing="5">
+		<Label text="Status"/>
+		<ComboBox fx:id="cbStatus">
+			<items>
+				<FXCollections fx:factory="observableArrayList">
+					<String fx:value=" "/>
+					<String fx:value="Não iniciada"/>
+					<String fx:value="Em andamento"/>
+					<String fx:value="Concluída"/>
+					<String fx:value="Cancelada"/>
+				</FXCollections>
+			</items>
+	
+		</ComboBox>
+	</VBox>
+	<Vbox spacing="5">
+		<Label text="Prioridade"/>
+		<ComboBox fx:id="cbPrioridade">
+			<items>
+				<FXCollections fx:factory="observableArrayList">
+					<String fx:value=" "/>
+					<String fx:value="Baixa"/>
+					<String fx:value="Média"/>
+					<String fx:value="Alta"/>
+				</FXCollections>
+			</items>
+	
+		</ComboBox>
+	</VBox>
+	
+	<VBox spacing="5">
+		<Label text="Data de criação"/>
+		<DatePicker fx:id="filtroDataCriacao"/>
+	</VBox>
+	<VBox spacing="5">
+		<Label text="Data de término"/>
+		<DatePicker fx:id="filtroDataTermino"/>
+	</VBox>
+	
+	<Button text="Filtrar"
+		    onAction="#filtrarBusca"/>
+</VBox>

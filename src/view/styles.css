@@ -1,0 +1,48 @@
+.root{
+	-fx-background-color: #f4f6f9;
+	-fx-font-family: "Segoe UI", "Arial";
+	
+}
+
+.label{
+	-fx-text-fill: #333333;	
+}
+
+.label.titulo{
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+}
+
+.list.view{
+	-fx-background-color: white;
+	-fx-border-color: #dcdcdc;
+	-fx-border-radius: 8;
+	-fx-background-radius: 8;
+}
+
+.text-field, .text-area, .combo-box, .data-picker{
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-border-color: #d0d0d0;
+}
+
+.button{
+	-fx-background-radius: 6;
+	-fx-cursor: hand;
+}
+
+.button.salvar{
+	-fx-background-color: #4a90e2;
+	-fx-text-fill: white;
+}
+
+.button.excluir{
+	-fx-background-color: #e74c3c;
+	-fx-text-fill:white;
+}
+
+.button.novo{
+	-fx-background-color: blue;
+	-fx-text-fill: white;
+	
+}

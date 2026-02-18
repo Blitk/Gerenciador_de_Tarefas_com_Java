@@ -1,0 +1,76 @@
+<?xml version="1.0" enconding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+			fx:controller="view.controller"
+			stylesheets="@/view/styles.css">
+			
+	<top>
+		<HBox spacing="10" padding="15">
+			<TextField fx:id="campobsuca"
+					   promptText="Buscar Tarefa..."
+					   HBox.hgrow="ALWAYS"/>
+			<button text="Filtrar"
+					fx:id="btnFiltrar"
+					onAction="#filtrarTarefas"/>
+		</HBox>
+	</top>
+	
+	<left>
+		<VBox prefWidth="300" spacing="10" padding="10">
+			<Label text="Controle de Tarefas"
+				   styleClass="titulo"
+				   style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+			<ListView fx:id="listaTarefas"
+			          VBox.vgrow="ALWAYS"/>
+			<button text="Nova Tarefa"
+			        fx:id="btnNovo"
+			        onAction="#novaTarefa"/>
+		</VBox>
+	</left>
+	
+	<center>
+		<VBox spacing="15" padding="20">
+			<Label text="Detalhes da Tarefa"
+				   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+			<VBox spacing="5">
+				<Label text="Título"/>
+				<TextField fx:id="campoTitulo"/>
+			</VBox>
+			<VBox spacing="5">
+				<Label text="Descrição"/>
+				<TextArea fx:id="campoDescricao"
+						  prefRowCount="4"/>
+			</VBox>
+			<HBox spacing="10">
+				<VBox spacing="5">
+					<Label text="Data Criação"/>
+					<DatePicker fx:id="campoDataCriacao"/>
+				</VBox>
+				<VBox spacing="5">
+					<Label text="Data Término"/>
+					<DatePicker fx:id="campoDataTermino"/>
+				</VBox>
+				<VBox spacing="5">
+					<Label text="Prioridade"/>
+					<ComboBox fx:id="comboPrioridade"/>
+				</VBox>
+				<VBox spacing="5">
+					<Label text="Status"/>
+					<ComboBox fx:id="comboStatus"/>
+				</VBox>
+			</HBox>
+			<HBox spacing="10">
+				<Button text="Salvar"
+				        styleClass="salvar"
+				        onAction="#salvarTarefa"/>
+				 <Button text="Excluir"
+				         styleClass="excluir"
+				        onAction="#salvarTarefa"/>
+			</Hbox>
+		</VBox>
+	</center>
+</BorderPane>
