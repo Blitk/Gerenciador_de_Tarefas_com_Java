@@ -5,7 +5,7 @@ Um sistema de controle de tarefas simples utilizando arquitetura em camadas MVC,
 
 ## Ferramentas utilizadas
   *JavaFX
-  *Java 23
+  *Java 25
   *CSV
   *MVC
   *Repository interface
