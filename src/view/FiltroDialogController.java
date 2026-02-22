@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FiltroDialogController {
 	
@@ -48,6 +50,15 @@ public class FiltroDialogController {
 	
 	public boolean isConfirmado() {
 		return confirmado;
+	}
+	
+	public List<String> retornaList(){
+		List<String> lista = new ArrayList<>();
+		lista.add(this.getStatusSelecionado());
+		lista.add(this.getPrioridadeSelecionada());
+		lista.add(this.getDataCriacaoSelecionada().toString());
+		lista.add(this.getDataTerminoSelecionada().toString());
+		return lista;
 	}
 
 	public ComboBox<String> getCbStatus() {

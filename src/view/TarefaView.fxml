@@ -5,12 +5,12 @@
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-			fx:controller="view.controller"
+			fx:controller="controller"
 			stylesheets="@/view/styles.css">
 			
 	<top>
 		<HBox spacing="10" padding="15">
-			<TextField fx:id="campobsuca"
+			<TextField fx:id="campoBusca"
 					   promptText="Buscar Tarefa..."
 					   HBox.hgrow="ALWAYS"/>
 			<button text="Filtrar"
@@ -69,7 +69,7 @@
 				        onAction="#salvarTarefa"/>
 				 <Button text="Excluir"
 				         styleClass="excluir"
-				        onAction="#salvarTarefa"/>
+				        onAction="#excluirTarefa"/>
 			</Hbox>
 		</VBox>
 	</center>
