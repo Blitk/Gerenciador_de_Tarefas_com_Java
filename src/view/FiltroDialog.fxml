@@ -1,19 +1,23 @@
-<?xml version="1.0" enconding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
 
 
 <VBox spacing="10"
 	xmlns:fx="http://javafx.com/fxml"
-	fx:controller="view/FiltroDialogController">
+	fx:controller="view.FiltroDialogController">
 	
 	<padding>
 		<Insets top="15" right="15" bottom="15" left="15"/>
 	</padding>
 	
 	<Label text="Filtros"/>
-	<Vbox spacing="5">
+	<VBox spacing="5">
 		<Label text="Status"/>
 		<ComboBox fx:id="cbStatus">
 			<items>
@@ -28,7 +32,7 @@
 	
 		</ComboBox>
 	</VBox>
-	<Vbox spacing="5">
+	<VBox spacing="5">
 		<Label text="Prioridade"/>
 		<ComboBox fx:id="cbPrioridade">
 			<items>

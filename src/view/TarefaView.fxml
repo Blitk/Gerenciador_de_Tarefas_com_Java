@@ -1,39 +1,48 @@
-<?xml version="1.0" enconding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-			fx:controller="controller"
+			fx:controller="view.Controller"
 			stylesheets="@/view/styles.css">
 			
 	<top>
-		<HBox spacing="10" padding="15">
+		<HBox spacing="10">
+			<padding>
+	        		<Insets top="15" right="15" bottom="15" left="15"/>
+	   	    </padding>
 			<TextField fx:id="campoBusca"
 					   promptText="Buscar Tarefa..."
 					   HBox.hgrow="ALWAYS"/>
-			<button text="Filtrar"
+			<Button text="Filtrar"
 					fx:id="btnFiltrar"
 					onAction="#filtrarTarefas"/>
 		</HBox>
 	</top>
 	
 	<left>
-		<VBox prefWidth="300" spacing="10" padding="10">
+		<VBox prefWidth="300" spacing="10">
+			<padding>
+	        		<Insets top="15" right="15" bottom="15" left="15"/>
+	   	    </padding>
 			<Label text="Controle de Tarefas"
 				   styleClass="titulo"
 				   style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 			<ListView fx:id="listaTarefas"
 			          VBox.vgrow="ALWAYS"/>
-			<button text="Nova Tarefa"
+			<Button text="Nova Tarefa"
 			        fx:id="btnNovo"
 			        onAction="#novaTarefa"/>
 		</VBox>
 	</left>
 	
 	<center>
-		<VBox spacing="15" padding="20">
+		<VBox spacing="15">
+			<padding>
+	        		<Insets top="15" right="15" bottom="15" left="15"/>
+	   	    </padding>
 			<Label text="Detalhes da Tarefa"
 				   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
 			<VBox spacing="5">
@@ -54,13 +63,13 @@
 					<Label text="Data Término"/>
 					<DatePicker fx:id="campoDataTermino"/>
 				</VBox>
-				<VBox spacing="5">
+				<VBox spacing="10">
 					<Label text="Prioridade"/>
-					<ComboBox fx:id="comboPrioridade"/>
+					<ComboBox fx:id="campoPrioridade"/>
 				</VBox>
-				<VBox spacing="5">
+				<VBox spacing="10">
 					<Label text="Status"/>
-					<ComboBox fx:id="comboStatus"/>
+					<ComboBox fx:id="campoStatus"/>
 				</VBox>
 			</HBox>
 			<HBox spacing="10">
@@ -70,7 +79,7 @@
 				 <Button text="Excluir"
 				         styleClass="excluir"
 				        onAction="#excluirTarefa"/>
-			</Hbox>
+			</HBox>
 		</VBox>
 	</center>
 </BorderPane>

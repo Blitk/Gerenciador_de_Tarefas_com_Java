@@ -3,10 +3,11 @@ package view;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.text.html.ListView;
-
+import model.Tarefa;
+import javafx.scene.control.ListView; 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,20 +15,32 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Prioridade;
 import model.Status;
+import repository.CSVTarefaRepository;
+import repository.TarefaRepository;
 import service.TarefaService;
 
 
 
 public class Controller extends Application{
+	
+	private TarefaService service;
 
 	private List<String> dadosFiltro = new ArrayList<>(); 
 	
-	private TarefaService service;
+	
+	public void startService() {
+		TarefaRepository repository = new CSVTarefaRepository();
+		TarefaService service = new TarefaService(repository);
+		this.service = service;
+	}
+	
+	private Long iDEmFoco;
 	
 	@FXML
 	private TextField campoBusca;
@@ -36,7 +49,7 @@ public class Controller extends Application{
 	private Button btnFiltro;
 	
 	@FXML
-	private ListView listaTarefas;
+	private ListView<String> listaTarefas;
 	
 	@FXML
 	private Button btnNovo;
@@ -45,7 +58,7 @@ public class Controller extends Application{
 	private TextField campoTitulo;
 	
 	@FXML
-	private TextField campoDescricao;
+	private TextArea campoDescricao;
 	
 	@FXML
 	private DatePicker campoDataTermino;
@@ -54,10 +67,10 @@ public class Controller extends Application{
 	private DatePicker campoDataCriacao;
 	
 	@FXML
-	private ComboBox<String> campoPrioridade;
+	private ComboBox<Prioridade> campoPrioridade;
 	
 	@FXML
-	private ComboBox<String> campoStatus;
+	private ComboBox<Status> campoStatus;
 	
 	@FXML
 	private void salvarTarefa() {
@@ -66,6 +79,11 @@ public class Controller extends Application{
 	
 	@FXML
 	private void excluirTarefa() {
+		
+	}
+	
+	@FXML
+	private void novaTarefa() {
 		
 	}
 	
@@ -94,20 +112,56 @@ public class Controller extends Application{
 		}
 	}
 	
-	public Controller(TarefaService service) {
-		this.service = service;
-		launch();
+	@FXML
+	public void initialize() {
+		this.startService();	
+		ObservableList<String> nomeTarefas = FXCollections.observableArrayList(
+				service.listarTodos()
+				.stream()
+				.map(t-> t.getTitulo())
+				.toList()
+				);
+		listaTarefas.setItems(nomeTarefas);
+		listaTarefas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+		       if (newValue != null) {
+		            Tarefa tf = service.listarTodos()
+		            		.stream()
+		            		.filter(t-> t.getTitulo() == newValue)
+		            		.findFirst()
+		            		.orElseThrow();
+		            this.iDEmFoco = tf.getId();
+		            this.campoTitulo.setText(tf.getTitulo());
+		            this.campoDescricao.setText(tf.getDescricao());
+		            campoPrioridade.setItems(FXCollections.observableArrayList(Prioridade.values()));
+		            this.campoPrioridade.setValue(tf.getPrioridade());
+		            campoStatus.setItems(FXCollections.observableArrayList(Status.values()));
+		            this.campoStatus.setValue(tf.getStatus());
+		            this.campoDataCriacao.setValue(tf.getDataCriacao());
+		            this.campoDataTermino.setValue(tf.getDataTermino());
+		        }
+		    });
+		
 	}
+	
+	public Controller() {
+		
+//		launch();
+	}
+	
+	
 
 	@Override
-	public void start(Stage stage) throws Exception {
-		
+	public void start(Stage stage) throws Exception { 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TarefaView.fxml"));
 		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root, 600,400);
+		Scene scene = new Scene(root, 1000,600);
 		stage.setTitle("Controle de Tarefas");
 		stage.setScene(scene);
 		stage.show();
 		
+	}
+	
+	public static void main(String[] args) {
+		launch();
 	}
 }

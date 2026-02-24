@@ -40,7 +40,7 @@ public class FiltroDialogController {
 		prioridadeSelecionada = cbPrioridade.getValue();
 		dataCriacaoSelecionada = filtroDataCriacao.getValue();
 		dataTerminoSelecionada = filtroDataTermino.getValue();
-		confirmado = true;
+		this.confirmado = true;
 	}
 	
 	public void fecharJanela() {
@@ -49,7 +49,7 @@ public class FiltroDialogController {
 	}
 	
 	public boolean isConfirmado() {
-		return confirmado;
+		return this.confirmado;
 	}
 	
 	public List<String> retornaList(){

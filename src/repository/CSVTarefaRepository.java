@@ -41,8 +41,8 @@ public class CSVTarefaRepository implements TarefaRepository{
 							dados[2],
 							Prioridade.valueOf(dados[3]),
 							Status.valueOf(dados[4]),
-							LocalDate.parse(dados[4]),
-							LocalDate.parse(dados[5]));
+							LocalDate.parse(dados[5].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+							LocalDate.parse(dados[6].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 					tarefas.add(tarefa);
 				}
 				
