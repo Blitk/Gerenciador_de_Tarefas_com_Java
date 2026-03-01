@@ -27,6 +27,9 @@ public class Tarefa {
 		this.setDataTermino(dataTermino);
 	}
 	
+	public Tarefa() {
+		
+	}
 	
 	public Long getId() {
 		return id;

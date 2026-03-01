@@ -17,16 +17,31 @@
 	</padding>
 	
 	<Label text="Filtros"/>
+	
+	<VBox spacing="10">
+	    <children>
+	        <fx:define>
+	            <ToggleGroup fx:id="filtros"/>
+	        </fx:define>
+	        
+	        <!-- Assign each RadioButton to the group using the fx:id reference -->
+	        <RadioButton text="Status" toggleGroup="$filtros"/>
+	        <RadioButton text="Prioridade" toggleGroup="$filtros"/>
+	        <RadioButton text="Data criação" toggleGroup="$filtros"/>
+	        <RadioButton text="Data término" toggleGroup="$filtros"/>
+	    </children>
+	</VBox>
+
 	<VBox spacing="5">
 		<Label text="Status"/>
 		<ComboBox fx:id="cbStatus">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value=" "/>
-					<String fx:value="Não iniciada"/>
-					<String fx:value="Em andamento"/>
-					<String fx:value="Concluída"/>
-					<String fx:value="Cancelada"/>
+					<String fx:value="NAOINICIADA"/>
+					<String fx:value="EMANDAMENTO"/>
+					<String fx:value="CONCLUIDA"/>
+					<String fx:value="CANCELADA"/>
 				</FXCollections>
 			</items>
 	
@@ -38,9 +53,9 @@
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value=" "/>
-					<String fx:value="Baixa"/>
-					<String fx:value="Média"/>
-					<String fx:value="Alta"/>
+					<String fx:value="BAIXA"/>
+					<String fx:value="MEDIA"/>
+					<String fx:value="ALTA"/>
 				</FXCollections>
 			</items>
 	

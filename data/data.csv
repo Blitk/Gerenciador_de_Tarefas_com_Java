@@ -1,2 +1,4 @@
-ID,Titulo,Descricao,Prioridade,Status,DataCriacao,DataTermino
-1,Programar em Java,Aplicar novos conhecimentos,ALTA,EMANDAMENTO,24/02/2026,28/02/2026
+ID, Titulo, Descricao, Prioridade, Status, DataCriacao, DataTermino
+1,Trocar Roupas de cama,Tirar as antigas e colocar novas,MEDIA,EMANDAMENTO,01/03/2026,03/03/2026
+3,Lavar Roupa,lavar tudo,MEDIA,EMANDAMENTO,01/03/2026,01/03/2026
+4,Trocar areia dos gatos,Limpar e trocar ,ALTA,CONCLUIDA,01/03/2026,03/03/2026

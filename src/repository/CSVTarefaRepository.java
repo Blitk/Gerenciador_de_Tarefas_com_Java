@@ -26,6 +26,8 @@ public class CSVTarefaRepository implements TarefaRepository{
 		carregarCSV();
 	}
 	
+	
+	
 	private void carregarCSV() {
 		File arquivo = new File(this.path);
 		if(arquivo.exists()) {
@@ -97,6 +99,9 @@ public class CSVTarefaRepository implements TarefaRepository{
 	@Override
 	public void update(Tarefa entity) {
 		delete(entity.getId());
+		entity.setId(this.findAll()
+				.getLast()
+				.getId()+1);
 		tarefas.add(entity);
 		escreverCSV();
 		
@@ -112,7 +117,7 @@ public class CSVTarefaRepository implements TarefaRepository{
 	@Override
 	public List<Tarefa> findByStatus(Status status) {
 		return tarefas.stream()
-				.filter(t -> t.getStatus() == status)
+				.filter(t -> t.getStatus().equals(status))
 				.toList();
 	}
 
@@ -120,7 +125,7 @@ public class CSVTarefaRepository implements TarefaRepository{
 	public List<Tarefa> findByPrioridade(Prioridade prioridade) {
 		
 		return tarefas.stream()
-				.filter(t -> t.getPrioridade() == prioridade)
+				.filter(t -> t.getPrioridade().equals(prioridade))
 				.toList();
 	}
 
@@ -128,7 +133,7 @@ public class CSVTarefaRepository implements TarefaRepository{
 	public List<Tarefa> findByDataCriacao(LocalDate dataCriacao) {
 		
 		return tarefas.stream()
-				.filter(t -> t.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) == dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+				.filter(t -> t.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).equals(dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))))
 				.toList();
 	}
 
@@ -136,7 +141,7 @@ public class CSVTarefaRepository implements TarefaRepository{
 	public List<Tarefa> findByDataTermino(LocalDate dataTermino) {
 		
 		return tarefas.stream()
-				.filter(t -> t.getDataTermino().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) == dataTermino.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+				.filter(t -> t.getDataTermino().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).equals(dataTermino.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))))
 				.toList();
 	}
 

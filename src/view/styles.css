@@ -36,6 +36,11 @@
 	-fx-text-fill: white;
 }
 
+.button.atualizar{
+	-fx-background-color: #4a90e2;
+	-fx-text-fill: white;
+}
+
 .button.excluir{
 	-fx-background-color: #e74c3c;
 	-fx-text-fill:white;

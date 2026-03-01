@@ -19,6 +19,7 @@
 			<Button text="Filtrar"
 					fx:id="btnFiltrar"
 					onAction="#filtrarTarefas"/>
+			<CheckBox fx:id="filtroCheck" text="" />
 		</HBox>
 	</top>
 	
@@ -76,9 +77,13 @@
 				<Button text="Salvar"
 				        styleClass="salvar"
 				        onAction="#salvarTarefa"/>
+				<Button text="Atualizar"
+				 		styleClass="atualizar"
+				 		onAction="#atualizarTarefa"/>
 				 <Button text="Excluir"
 				         styleClass="excluir"
 				        onAction="#excluirTarefa"/>
+				 
 			</HBox>
 		</VBox>
 	</center>

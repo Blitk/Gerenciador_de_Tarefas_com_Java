@@ -1,7 +1,10 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -10,6 +13,9 @@ import java.util.List;
 
 public class FiltroDialogController {
 	
+	@FXML
+    private ToggleGroup filtros; 
+
 	@FXML
 	private ComboBox<String> cbStatus;
 	
@@ -29,18 +35,61 @@ public class FiltroDialogController {
 	
 	private boolean confirmado = false;
 	
+	private String filtroSelecionado;
+	
 	@FXML
-	private void inicializar() {
+	private void initialize() {
+		filtros.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+                if (new_toggle != null) {
+                    RadioButton selected = (RadioButton) new_toggle;
+                    filtroSelecionado = selected.getText();
+                }
+            }
+        });
 		
 	}
 	
 	@FXML
 	private void filtrarBusca() {
-		statusSelecionado = cbStatus.getValue();
-		prioridadeSelecionada = cbPrioridade.getValue();
-		dataCriacaoSelecionada = filtroDataCriacao.getValue();
-		dataTerminoSelecionada = filtroDataTermino.getValue();
-		this.confirmado = true;
+		
+	    statusSelecionado = cbStatus.getValue();
+	    prioridadeSelecionada = cbPrioridade.getValue();
+	    dataCriacaoSelecionada = filtroDataCriacao.getValue();
+	    dataTerminoSelecionada = filtroDataTermino.getValue();
+
+	    if (verificaCampoObrigatorio()) {
+	        this.confirmado = true;
+	        fecharJanela(); 
+	    } else {
+	        Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.setTitle("Campo Vazio");
+	        alert.setHeaderText(null);
+	        alert.setContentText("Por favor, preencha o campo obrigatório: " + (filtroSelecionado != null ? filtroSelecionado : "Selecione um filtro"));
+	        alert.showAndWait();
+	    }
+
+		
+	}
+	
+	private Boolean verificaCampoObrigatorio() {
+	    if (filtroSelecionado == null) return false;
+
+	    if (filtroSelecionado.equals("Status")) {
+	        return statusSelecionado != null && !statusSelecionado.isBlank();
+	    }
+	    if (filtroSelecionado.equals("Prioridade")) {
+	        return prioridadeSelecionada != null && !prioridadeSelecionada.isBlank();
+	    }
+	    if (filtroSelecionado.equals("Data criação")) {
+	        return dataCriacaoSelecionada != null;
+	    }
+	    if (filtroSelecionado.equals("Data término")) {
+	        return dataTerminoSelecionada != null;
+	    }
+	    
+	    return false;
 	}
 	
 	public void fecharJanela() {
@@ -54,10 +103,19 @@ public class FiltroDialogController {
 	
 	public List<String> retornaList(){
 		List<String> lista = new ArrayList<>();
+		lista.add(this.filtroSelecionado);
 		lista.add(this.getStatusSelecionado());
 		lista.add(this.getPrioridadeSelecionada());
-		lista.add(this.getDataCriacaoSelecionada().toString());
-		lista.add(this.getDataTerminoSelecionada().toString());
+		if (this.getDataCriacaoSelecionada() != null) {
+			lista.add(this.getDataCriacaoSelecionada().toString());
+		}else {
+			lista.add(null);
+		}
+		if (this.dataTerminoSelecionada != null) {
+			lista.add(this.getDataTerminoSelecionada().toString());
+		}else {
+			lista.add(null);
+		}
 		return lista;
 	}
 
