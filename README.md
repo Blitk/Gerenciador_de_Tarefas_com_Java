@@ -49,11 +49,11 @@ data/
 
 ## Capturas de tela
 
-![Captura de tela 1]screenshots/screenshot1.png)
+![Captura de tela 1](screenshots/screenshot1.png)
 
-![Captura de tela 2]screenshots/screenshot2.png)
+![Captura de tela 2](screenshots/screenshot2.png)
 
-![Captura de tela 3]screenshots/screenshot3.png)
+![Captura de tela 3](screenshots/screenshot3.png)
 
 ---
 
