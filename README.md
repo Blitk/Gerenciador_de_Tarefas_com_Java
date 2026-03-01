@@ -26,6 +26,7 @@ src/
  ├─ service
  ├─ test
  └─ view
+screenshots/
 data/
 ```
 - **application** → execução da aplicação
@@ -33,7 +34,8 @@ data/
 - **repository** → contrato + implementação de persistência  
 - **service** → intermedia interface e lógica  
 - **test** → testes da aplicação
-- **view** → interface gráfica (JavaFX)  
+- **view** → interface gráfica (JavaFX)
+- **screenshots** → capturas de tela
 - **data** → armazenamento do arquivo CSV  
 
 ---
