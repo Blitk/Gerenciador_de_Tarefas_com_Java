@@ -1,7 +1,7 @@
 
 # Gerenciador de Tarefas com Java
 
-Projeto desktop desenvolvido em **Java + JavaFX** com foco em organização de código, separação de responsabilidades e persistência simples usando arquivo CSV.
+Projeto desktop desenvolvido em **Java + JavaFX** com foco em organização de código, testes com JUnit, separação de responsabilidades e persistência simples usando arquivo CSV.
 
 ---
 
@@ -12,7 +12,8 @@ Projeto desktop desenvolvido em **Java + JavaFX** com foco em organização de c
 - FXML
 - Arquivo CSV para persistência  
 - Arquitetura MVC  
-- Padrão Repository  
+- Padrão Repository
+- Testes JUnit  
 
 ---
 
