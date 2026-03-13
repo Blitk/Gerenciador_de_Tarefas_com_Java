@@ -7,7 +7,7 @@ Projeto desktop desenvolvido em **Java + JavaFX** com foco em organização de c
 
 ## Tecnologias
 
-- Java  
+- Java 25
 - JavaFX  
 - FXML
 - Arquivo CSV para persistência  
